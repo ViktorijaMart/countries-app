@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e3ffe3;
   color: #2d322d;
 }
 
 .app {
   min-height: 100vh;
+  background-color: #e3ffe3;
   position: relative;
 }
