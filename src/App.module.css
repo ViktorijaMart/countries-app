@@ -5,3 +5,8 @@
   background-color: #e3ffe3;
   color: #2d322d;
 }
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
