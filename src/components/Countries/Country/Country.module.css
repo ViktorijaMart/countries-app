@@ -1,0 +1,14 @@
+.country {
+  background-color: #ccffcc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.country > p {
+  height: 21px;
+}
+
+.country__area-size--superscript {
+  font-size: 0.83em;
+  vertical-align: super;
+}
