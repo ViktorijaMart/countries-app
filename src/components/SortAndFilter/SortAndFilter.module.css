@@ -1,0 +1,8 @@
+.sort-and-filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort-and-filter__sort > Button {
+  margin-right: 20px;
+}

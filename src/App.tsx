@@ -5,6 +5,7 @@ import styles from "./App.module.css";
 import Countries from "./components/Countries/Countries";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
+import SortAndFilter from "./components/SortAndFilter/SortAndFilter";
 
 function App() {
   type country = {
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className={styles.app}>
       <Header />
+      <SortAndFilter />
       <Countries countries={countries} />
       <Footer />
     </div>
