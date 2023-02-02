@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -14,22 +15,49 @@ import Row from "../UI/Row";
 
 library.add(faFilter, faArrowDownAZ, faArrowDownZA);
 
-const SortAndFilter = () => {
+type props = {
+  onSortCountries: (sortAsc: boolean, sortDesc: boolean) => void;
+};
+
+const SortAndFilter = (props: props) => {
+  const [sortAsc, setSortAsc] = useState(false);
+  const [sortDesc, setSortDesc] = useState(false);
+
   const sortAscIcon = <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />;
   const sortDescIcon = <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />;
 
   const filterIcon = <FontAwesomeIcon icon={["fas", "filter"]} />;
 
+  const sortAcsending = () => {
+    setSortAsc(true);
+    setSortDesc(false);
+  };
+
+  const sortDescending = () => {
+    setSortDesc(true);
+    setSortAsc(false);
+  };
+
+  useEffect(() => {
+    props.onSortCountries(sortAsc, sortDesc);
+  }, [sortAsc, sortDesc]);
+
   return (
-    <Row>
-      <div className={styles["sort-and-filter"]}>
-        <div className={styles["sort-and-filter__sort"]}>
-          <Button icon={sortAscIcon} content="Sort A to Z" />
-          <Button icon={sortDescIcon} content="Sort Z to A" />
-        </div>
-        <Button icon={filterIcon} content="Filter" />
+    <div className={styles["sort-and-filter"]}>
+      <div className={styles["sort-and-filter__sort"]}>
+        <Button
+          icon={sortAscIcon}
+          content="Sort A to Z"
+          onClick={sortAcsending}
+        />
+        <Button
+          icon={sortDescIcon}
+          content="Sort Z to A"
+          onClick={sortDescending}
+        />
       </div>
-    </Row>
+      {/* <Button icon={filterIcon} content="Filter" /> */}
+    </div>
   );
 };
 
