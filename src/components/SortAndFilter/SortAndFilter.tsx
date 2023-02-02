@@ -12,7 +12,7 @@ import styles from "./SortAndFilter.module.css";
 
 import Button from "../UI/Button";
 import Row from "../UI/Row";
-import Filter from "./Filter";
+import Filters from "./Filters/Filters";
 
 library.add(faFilter, faArrowDownAZ, faArrowDownZA);
 
@@ -69,7 +69,7 @@ const SortAndFilter = (props: props) => {
           onClick={showFilterHandler}
         />
       </div>
-      {showFilter && <Filter />}
+      {showFilter && <Filters />}
     </div>
   );
 };
