@@ -12,6 +12,7 @@ import styles from "./SortAndFilter.module.css";
 
 import Button from "../UI/Button";
 import Row from "../UI/Row";
+import Filter from "./Filter";
 
 library.add(faFilter, faArrowDownAZ, faArrowDownZA);
 
@@ -22,6 +23,7 @@ type props = {
 const SortAndFilter = (props: props) => {
   const [sortAsc, setSortAsc] = useState(false);
   const [sortDesc, setSortDesc] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
 
   const sortAscIcon = <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />;
   const sortDescIcon = <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />;
@@ -42,21 +44,32 @@ const SortAndFilter = (props: props) => {
     props.onSortCountries(sortAsc, sortDesc);
   }, [sortAsc, sortDesc]);
 
+  const showFilterHandler = () => {
+    setShowFilter(!showFilter);
+  };
+
   return (
-    <div className={styles["sort-and-filter"]}>
-      <div className={styles["sort-and-filter__sort"]}>
+    <div className={styles["sort-and-filter-container"]}>
+      <div className={styles["sort-and-filter"]}>
+        <div className={styles["sort-and-filter__sort"]}>
+          <Button
+            icon={sortAscIcon}
+            content="Sort A to Z"
+            onClick={sortAcsending}
+          />
+          <Button
+            icon={sortDescIcon}
+            content="Sort Z to A"
+            onClick={sortDescending}
+          />
+        </div>
         <Button
-          icon={sortAscIcon}
-          content="Sort A to Z"
-          onClick={sortAcsending}
-        />
-        <Button
-          icon={sortDescIcon}
-          content="Sort Z to A"
-          onClick={sortDescending}
+          icon={filterIcon}
+          content="Filter"
+          onClick={showFilterHandler}
         />
       </div>
-      {/* <Button icon={filterIcon} content="Filter" /> */}
+      {showFilter && <Filter />}
     </div>
   );
 };

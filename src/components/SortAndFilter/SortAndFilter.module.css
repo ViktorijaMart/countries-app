@@ -1,7 +1,12 @@
+.sort-and-filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
 .sort-and-filter {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .sort-and-filter__sort > Button {
