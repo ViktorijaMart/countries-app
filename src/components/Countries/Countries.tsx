@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import internal from "stream";
 import SortAndFilter from "../SortAndFilter/SortAndFilter";
 import Row from "../UI/Row";
 import Country from "./Country/Country";
@@ -17,7 +16,9 @@ type props = {
 };
 
 const Countries = (props: props) => {
-  const [countries, setCountries] = useState(props.countries);
+  const initialCountries = props.countries;
+  const [countries, setCountries] = useState(initialCountries);
+  const lithuaniaArea: number = 65300;
 
   useEffect(() => {
     setCountries(props.countries);
@@ -50,9 +51,56 @@ const Countries = (props: props) => {
     }
   };
 
+  const filterHandler = (filterByArea: boolean, filterByRegion: boolean) => {
+    if (initialCountries && countries) {
+      const filterByAreaFunction = () => {
+        const filteredByArea = initialCountries.filter(
+          (country) => country.area < lithuaniaArea
+        );
+
+        setCountries(filteredByArea);
+      };
+
+      const filterByRegionFunction = () => {
+        const filteredByRegion = initialCountries.filter(
+          (country) => country.region === "Oceania"
+        );
+
+        setCountries(filteredByRegion);
+      };
+
+      const filterBothFunction = () => {
+        const filtered = countries
+          .filter((country) => country.area < lithuaniaArea)
+          .filter((country) => country.region === "Oceania");
+
+        setCountries(filtered);
+      };
+
+      const filterBoth = filterByArea && filterByRegion;
+
+      switch (true) {
+        case filterBoth:
+          filterBothFunction();
+          break;
+        case filterByArea:
+          filterByAreaFunction();
+          break;
+        case filterByRegion:
+          filterByRegionFunction();
+          break;
+        default:
+          setCountries(initialCountries);
+      }
+    }
+  };
+
   return (
     <Row>
-      <SortAndFilter onSortCountries={sortCountriesHandler} />
+      <SortAndFilter
+        onSortCountries={sortCountriesHandler}
+        onFilter={filterHandler}
+      />
       <div>
         {countries &&
           countries.map((country) =>

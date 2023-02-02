@@ -18,6 +18,7 @@ library.add(faFilter, faArrowDownAZ, faArrowDownZA);
 
 type props = {
   onSortCountries: (sortAsc: boolean, sortDesc: boolean) => void;
+  onFilter: (filterByArea: boolean, filterByRegion: boolean) => void;
 };
 
 const SortAndFilter = (props: props) => {
@@ -48,6 +49,10 @@ const SortAndFilter = (props: props) => {
     setShowFilter(!showFilter);
   };
 
+  const filterHandler = (filterByArea: boolean, filterByRegion: boolean) => {
+    props.onFilter(filterByArea, filterByRegion);
+  };
+
   return (
     <div className={styles["sort-and-filter-container"]}>
       <div className={styles["sort-and-filter"]}>
@@ -69,7 +74,7 @@ const SortAndFilter = (props: props) => {
           onClick={showFilterHandler}
         />
       </div>
-      {showFilter && <Filters />}
+      {showFilter && <Filters onFilter={filterHandler} />}
     </div>
   );
 };
