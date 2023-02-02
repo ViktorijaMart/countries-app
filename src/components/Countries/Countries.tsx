@@ -16,9 +16,10 @@ type props = {
 const Countries = (props: props) => {
   const countries = props.countries;
 
-  const createCountryItem = (country: country) => {
+  const createCountryItem = (country: country, index: number) => {
     return (
       <Country
+        key={index}
         name={country.name}
         region={country.region}
         area={country.area}
@@ -29,7 +30,10 @@ const Countries = (props: props) => {
   return (
     <Row>
       <div>
-        {countries && countries.map((country) => createCountryItem(country))}
+        {countries &&
+          countries.map((country) =>
+            createCountryItem(country, countries.indexOf(country))
+          )}
       </div>
     </Row>
   );

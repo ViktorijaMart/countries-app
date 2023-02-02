@@ -1,6 +1,7 @@
 import styles from "./Country.module.css";
 
 type props = {
+  key: number;
   name: string;
   region: string;
   area: number;
