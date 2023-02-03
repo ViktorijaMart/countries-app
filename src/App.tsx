@@ -15,7 +15,6 @@ type country = {
 
 function App() {
   const [countries, setCountries] = useState<country[] | null>(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getCountries = () => {
@@ -23,10 +22,9 @@ function App() {
         .get("https://restcountries.com/v2/all?fields=name,region,area")
         .then((data) => {
           setCountries(data.data);
-          setError(null);
         })
         .catch((error) => {
-          setError(error.message);
+          console.log(error.message);
           setCountries(null);
         });
     };
