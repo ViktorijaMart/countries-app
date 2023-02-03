@@ -51,7 +51,10 @@ const Countries = (props: props) => {
     }
   };
 
-  const filterHandler = (filterByArea: boolean, filterByRegion: boolean) => {
+  const filterCountriesHandler = (
+    filterByArea: boolean,
+    filterByRegion: boolean
+  ) => {
     if (initialCountries && countries) {
       const filterByAreaFunction = () => {
         const filteredByArea = initialCountries.filter(
@@ -69,7 +72,7 @@ const Countries = (props: props) => {
         setCountries(filteredByRegion);
       };
 
-      const filterBothFunction = () => {
+      const filterByBothFunction = () => {
         const filtered = countries
           .filter((country) => country.area < lithuaniaArea)
           .filter((country) => country.region === "Oceania");
@@ -81,7 +84,7 @@ const Countries = (props: props) => {
 
       switch (true) {
         case filterBoth:
-          filterBothFunction();
+          filterByBothFunction();
           break;
         case filterByArea:
           filterByAreaFunction();
@@ -99,7 +102,7 @@ const Countries = (props: props) => {
     <Row>
       <SortAndFilter
         onSortCountries={sortCountriesHandler}
-        onFilter={filterHandler}
+        onFilter={filterCountriesHandler}
       />
       <div>
         {countries &&

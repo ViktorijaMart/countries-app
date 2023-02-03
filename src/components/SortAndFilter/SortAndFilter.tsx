@@ -26,10 +26,12 @@ const SortAndFilter = (props: props) => {
   const [sortDesc, setSortDesc] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
 
+  // BUTTON ICONS
   const sortAscIcon = <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />;
   const sortDescIcon = <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />;
-
   const filterIcon = <FontAwesomeIcon icon={["fas", "filter"]} />;
+
+  // SORT LOGIC
 
   const sortAcsending = () => {
     setSortAsc(true);
@@ -45,13 +47,23 @@ const SortAndFilter = (props: props) => {
     props.onSortCountries(sortAsc, sortDesc);
   }, [sortAsc, sortDesc]);
 
+  // SORT LOGIC ENDS
+
+  // SHOW FILTER LOGIC
+
   const showFilterHandler = () => {
     setShowFilter(!showFilter);
   };
 
+  // SHOW FILTER LOGIC ENDS
+
+  // FILTER LOGIC
+
   const filterHandler = (filterByArea: boolean, filterByRegion: boolean) => {
     props.onFilter(filterByArea, filterByRegion);
   };
+
+  // FILTER LOGIC ENDS
 
   return (
     <div className={styles["sort-and-filter-container"]}>
