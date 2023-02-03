@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import styles from "./App.module.css";
 import Countries from "./components/Countries/Countries";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
-import SortAndFilter from "./components/SortAndFilter/SortAndFilter";
+
+type country = {
+  name: string;
+  region: string;
+  area: number;
+  independent: boolean;
+};
 
 function App() {
-  type country = {
-    name: string;
-    region: string;
-    area: number;
-    independent: boolean;
-  };
-
   const [countries, setCountries] = useState<country[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
@@ -39,7 +38,6 @@ function App() {
   return (
     <div className={styles.app}>
       <Header />
-      <SortAndFilter />
       <Countries countries={countries} />
       <Footer />
     </div>
