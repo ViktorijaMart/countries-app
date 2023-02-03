@@ -1,7 +1,12 @@
-button {
+.button {
   background-color: #8fff8f;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   font-size: 16px;
+  display: flex;
+}
+
+.button__text {
+  margin-left: 10px;
 }

@@ -11,7 +11,7 @@ const Button = (props: props) => {
     <button className={styles.button} onClick={props.onClick}>
       <>
         {props.icon}
-        {props.content}
+        <p className={styles["button__text"]}>{props.content}</p>
       </>
     </button>
   );
