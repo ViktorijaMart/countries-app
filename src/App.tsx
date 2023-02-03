@@ -15,7 +15,6 @@ type country = {
 
 function App() {
   const [countries, setCountries] = useState<country[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ function App() {
           setError(error.message);
           setCountries(null);
         });
-      setLoading(false);
     };
     getCountries();
   }, []);
@@ -38,7 +36,7 @@ function App() {
   return (
     <div className={styles.app}>
       <Header />
-      <Countries countries={countries} />
+      {countries && <Countries countries={countries} />}
       <Footer />
     </div>
   );

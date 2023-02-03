@@ -11,8 +11,19 @@ type country = {
   independent: boolean;
 };
 
+type event = {
+  index: number | null;
+  selected: number;
+  nextSelectedPage: number | undefined;
+  event: object;
+  isPrevious: boolean;
+  isNext: boolean;
+  isBreak: boolean;
+  isActive: boolean;
+};
+
 type props = {
-  countries: null | country[];
+  countries: country[];
 };
 
 const Countries = (props: props) => {
@@ -36,18 +47,16 @@ const Countries = (props: props) => {
   };
 
   const sortCountriesHandler = (sortAsc: boolean, sortDesc: boolean) => {
-    if (countries) {
-      if (sortAsc) {
-        setCountries(
-          countries.slice().sort((a, b) => a.name.localeCompare(b.name))
-        );
-      }
+    if (sortAsc) {
+      setCountries(
+        countries.slice().sort((a, b) => a.name.localeCompare(b.name))
+      );
+    }
 
-      if (sortDesc) {
-        setCountries(
-          countries.slice().sort((a, b) => b.name.localeCompare(a.name))
-        );
-      }
+    if (sortDesc) {
+      setCountries(
+        countries.slice().sort((a, b) => b.name.localeCompare(a.name))
+      );
     }
   };
 
@@ -55,46 +64,44 @@ const Countries = (props: props) => {
     filterByArea: boolean,
     filterByRegion: boolean
   ) => {
-    if (initialCountries && countries) {
-      const filterByAreaFunction = () => {
-        const filteredByArea = initialCountries.filter(
-          (country) => country.area < lithuaniaArea
-        );
+    const filterByAreaFunction = () => {
+      const filteredByArea = initialCountries.filter(
+        (country) => country.area < lithuaniaArea
+      );
 
-        setCountries(filteredByArea);
-      };
+      setCountries(filteredByArea);
+    };
 
-      const filterByRegionFunction = () => {
-        const filteredByRegion = initialCountries.filter(
-          (country) => country.region === "Oceania"
-        );
+    const filterByRegionFunction = () => {
+      const filteredByRegion = initialCountries.filter(
+        (country) => country.region === "Oceania"
+      );
 
-        setCountries(filteredByRegion);
-      };
+      setCountries(filteredByRegion);
+    };
 
-      const filterByBothFunction = () => {
-        const filtered = countries
-          .filter((country) => country.area < lithuaniaArea)
-          .filter((country) => country.region === "Oceania");
+    const filterByBothFunction = () => {
+      const filtered = countries
+        .filter((country) => country.area < lithuaniaArea)
+        .filter((country) => country.region === "Oceania");
 
-        setCountries(filtered);
-      };
+      setCountries(filtered);
+    };
 
-      const filterBoth = filterByArea && filterByRegion;
+    const filterBoth = filterByArea && filterByRegion;
 
-      switch (true) {
-        case filterBoth:
-          filterByBothFunction();
-          break;
-        case filterByArea:
-          filterByAreaFunction();
-          break;
-        case filterByRegion:
-          filterByRegionFunction();
-          break;
-        default:
-          setCountries(initialCountries);
-      }
+    switch (true) {
+      case filterBoth:
+        filterByBothFunction();
+        break;
+      case filterByArea:
+        filterByAreaFunction();
+        break;
+      case filterByRegion:
+        filterByRegionFunction();
+        break;
+      default:
+        setCountries(initialCountries);
     }
   };
 
@@ -105,10 +112,9 @@ const Countries = (props: props) => {
         onFilter={filterCountriesHandler}
       />
       <div>
-        {countries &&
-          countries.map((country) =>
-            createCountryItem(country, countries.indexOf(country))
-          )}
+        {countries.map((country) =>
+          createCountryItem(country, initialCountries.indexOf(country))
+        )}
       </div>
     </Row>
   );
