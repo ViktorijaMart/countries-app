@@ -33,7 +33,7 @@ const SortAndFilter = (props: props) => {
 
   // SORT LOGIC
 
-  const sortAcsending = () => {
+  const sortAscending = () => {
     setSortAsc(true);
     setSortDesc(false);
   };
@@ -72,7 +72,7 @@ const SortAndFilter = (props: props) => {
           <Button
             icon={sortAscIcon}
             content="Sort A to Z"
-            onClick={sortAcsending}
+            onClick={sortAscending}
           />
           <Button
             icon={sortDescIcon}
