@@ -2,10 +2,17 @@
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
+  gap: 20px;
 }
 
 .filter > * {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .filter {
+    flex-direction: column;
+  }
 }
