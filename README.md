@@ -15,9 +15,9 @@ As of now, I didn't implement all the logic I wanted and left some small mistake
 - The filter logic I came up with is best suitable for this situation (only having two filter categories with one option each). In more complex cases I would need to use different logic.
 - I tried implementing pagination which didn't work.
 - I didn't make it fully responsive yet:
-  -  on phones the sort buttons look squished - I will hide the text and keep the icons for both sort and filter buttons.
-  -  on phones filter section looks disproportioned - I will change flex-direction to a column.
-  -  on phones I will make the h1 font smaller.
+  -  ~~on phones the sort buttons look squished - I will hide the text and keep the icons for both sort and filter buttons.~~ Done
+  -  ~~on phones filter section looks disproportioned - I will change flex-direction to a column.~~ Done
+  -  ~~on phones I will make the h1 font smaller.~~ Done
 - ~~I didn't change the title and icon of the app.~~ changed 2023-03-14
 
 ## Installing
