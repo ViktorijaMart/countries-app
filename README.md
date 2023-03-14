@@ -18,7 +18,7 @@ As of now, I didn't implement all the logic I wanted and left some small mistake
   -  on phones the sort buttons look squished - I will hide the text and keep the icons for both sort and filter buttons.
   -  on phones filter section looks disproportioned - I will change flex-direction to a column.
   -  on phones I will make the h1 font smaller.
--  I didn't change the title and icon of the app.
+- ~~I didn't change the title and icon of the app.~~ changed 2023-03-14
 
 ## Installing
 
